@@ -23,6 +23,8 @@ pub struct FmtConfig {
     /// Argument for formatter
     #[serde(default)]
     pub options: Vec<String>,
+    /// Working directory
+    pub work_dir: Option<String>,
     /// File or Folder that is included to be formatted
     #[serde(default)]
     pub includes: Vec<String>,

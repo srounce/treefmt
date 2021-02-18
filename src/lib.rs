@@ -6,6 +6,7 @@ pub mod config;
 pub mod customlog;
 pub mod engine;
 pub mod eval_cache;
+pub mod formatter;
 
 use customlog::CustomLogOutput;
 use serde::{Deserialize, Serialize};
