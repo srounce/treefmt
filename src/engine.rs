@@ -241,13 +241,16 @@ pub fn run_treefmt(
             });
 
     // Finally display all the paths that have been formatted
-    for (_name, paths) in changed_matches {
+    for (name, paths) in changed_matches {
         // Keep track of how many files were reformatted
         reformatted_files += paths.len();
-        // println!("{}:", name);
-        // for path in paths {
-        //     println!("- {}", path.display());
-        // }
+
+        if fail_on_change && !paths.is_empty() {
+            println!("{}:", name);
+            for path in paths {
+                println!("Changed {}", path.display());
+            }
+        }
     }
 
     println!(
@@ -255,7 +258,7 @@ pub fn run_treefmt(
 traversed {} files
 matched {} files to formatters
 left with {} files after cache
-of whom {} files were re-formatted
+of which {} files were re-formatted
 all of this in {:.2?}
         "#,
         traversed_files,
