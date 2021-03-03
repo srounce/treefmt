@@ -26,9 +26,9 @@ pub struct Cli {
     #[structopt(long = "init")]
     pub init: bool,
 
-    /// Clear the evaluation cache. Use in case the cache is not precise enough.
-    #[structopt(long = "clear-cache")]
-    pub clear_cache: bool,
+    /// Don't use the evaluation cache. Use in case the cache is not precise enough.
+    #[structopt(long = "no-cache")]
+    pub no_cache: bool,
 
     /// Exit with error if any changes were made. Useful for CI.
     #[structopt(long = "fail-on-change")]
@@ -84,7 +84,7 @@ pub fn run_cli(cli: &Cli) -> anyhow::Result<()> {
             &cli.tree_root,
             &cli.work_dir,
             &cli.paths,
-            cli.clear_cache,
+            cli.no_cache,
             cli.fail_on_change,
         )?
     }

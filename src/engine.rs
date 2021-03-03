@@ -16,7 +16,7 @@ pub fn run_treefmt(
     cache_dir: &Path,
     treefmt_toml: &Path,
     paths: &[PathBuf],
-    clear_cache: bool,
+    no_cache: bool,
     fail_on_change: bool,
 ) -> anyhow::Result<()> {
     assert!(tree_root.is_absolute());
@@ -88,7 +88,7 @@ pub fn run_treefmt(
     timed_debug("load formatters");
 
     // Load the eval cache
-    let cache = if clear_cache {
+    let cache = if no_cache {
         // Start with an empty cache
         CacheManifest::default()
     } else {

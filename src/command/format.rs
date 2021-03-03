@@ -10,7 +10,7 @@ pub fn format_cmd(
     tree_root: &Option<PathBuf>,
     work_dir: &Path,
     paths: &[PathBuf],
-    clear_cache: bool,
+    no_cache: bool,
     fail_on_change: bool,
 ) -> anyhow::Result<()> {
     let proj_dirs = match ProjectDirs::from("com", "NumTide", "treefmt") {
@@ -67,7 +67,7 @@ pub fn format_cmd(
         &cache_dir,
         &config_file,
         &paths,
-        clear_cache,
+        no_cache,
         fail_on_change,
     )?;
 
